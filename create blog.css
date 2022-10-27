@@ -1,0 +1,186 @@
+.fa-thumbs-up{
+    /* margin-top: 100px; */
+    cursor: pointer;
+    font-size:x-large;
+}
+
+/* #post{
+    font-size: larger;
+    text-transform: uppercase;
+    text-decoration: dotted;
+     */
+
+
+body{
+    width: 100vw;
+    height: 180vh;
+    /* background-color: aqua; */
+    margin: 0%;
+    padding: 0%;
+    display: flex;
+}
+#main-div {
+    flex: 1;
+    /* background-color: aqua; */
+    display: flex;
+    flex-direction: column;
+    /* position: fixed; */
+    /* position: relative; */
+    
+}
+
+#header{
+    flex: 0.1;
+    /* height: auto;
+    width: auto; */
+    background-color: aqua;
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+    /* position: fixed; */
+}
+
+#blog-app-css{
+    color: red;
+    font-style: italic;
+   font-size:50px;
+   /* text-align: center; */
+}
+
+#post-div{
+    /* flex: 0.1; */
+    height: auto;
+    width: auto; 
+    background-color: blanchedalmond;
+     /* display: flex;
+    justify-content: space-between;
+    align-items: center;  */
+    /* position: fixed; */
+}
+
+#post-text{
+text-transform: uppercase;
+font-style: italic;
+font-size: large;
+border-color: yellow;
+/* border: hidden; */
+
+}
+
+#upload-image{
+    color: gray;
+    /* cursor: pointer; */
+}
+
+#post-button{
+    border-color: rgb(161, 204, 119);
+font-style: italic;
+font-weight: bold;
+/* font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; */
+/* background-color: rgb(153, 255, 0); */
+background-color: lightgray;
+color: lightgreen;
+font-size: x-large;
+cursor: pointer;
+
+}
+
+#card-main-div{
+    flex: 1.2;
+    background-color: rgb(122, 182, 182);
+    display: flex;
+    /* display: inline; */
+    /* flex-direction: ; */
+
+}
+
+#card-child-1{
+    flex: 1;
+height: auto;
+    background-color: rgb(167, 182, 168);
+  /* display: flex; */
+  display: flex;
+  flex-wrap: wrap;
+}
+/* #card-child-2{
+    flex: 1;
+    background-color: rgb(237, 252, 252);
+}
+#card-child-3{
+    flex: 1;
+    background-color: cadetblue;
+} */
+
+
+
+/* bosstrap card css */
+
+#post-imge{
+    width: 80%;
+    /* height: 100%!important; */
+}
+
+.card{
+    margin-left: 3%;
+ /* height: 200px;   */
+}
+
+
+ /* subhan ke card no responsive */
+
+/*  
+#card{
+    border-radius: 4px;
+    margin: 8px;
+    margin-left: 40px;
+    width: 20%;
+    height: 50%;
+    background-color: #fff;
+    border: 1px solid gray;
+   
+}
+#img_div{
+    height: 45%;
+    width:100%;
+    background-color: blueviolet;
+
+    display: flex;
+}
+#img_div img{
+    width: 100%;
+    background-repeat: no-repeat;
+}
+
+#title{
+margin-top: 10%;
+font-weight: bold;
+font-size: x-large;
+}
+
+#description{
+    margin-top: 10%;
+    font-style: italic;
+}
+
+.header h1{
+text-align: center;
+color: #fff;
+position: relative;
+top: 2px;
+font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+ width: 40%; 
+}
+#post_file{
+    color: #fff;
+}
+#btn_del{
+    /* position: relative;
+    left:45%;
+    top: 7px; 
+}
+
+#like_button{
+
+margin-top:20%;
+
+} */

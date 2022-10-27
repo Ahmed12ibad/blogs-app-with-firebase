@@ -1,0 +1,64 @@
+body{
+    width: 100vw;
+    height: 100vh;
+    padding: 0%;
+    margin: 0%;
+    display: flex;
+justify-content: center;
+align-items: center;
+background-color: rgb(47, 38, 38);
+/* background-color: aqua; */
+
+}
+
+#main_div{
+    /* flex: 0.4; */
+    /* width:35%; */
+    width: auto;
+    /* height: 60%; */
+    /* width: auto; */
+    height: auto;
+    background-color: rgb(88, 84, 84);
+    border-radius: 20px;
+    /* transition: all; */
+}
+
+#rigister-div{
+    /* display: none; */
+    line-height: 3rem;
+
+}
+
+input{
+    font-size: large;
+    /* line-height: re; */
+    
+}
+
+#submit-button{
+/* border: hidden;   */
+cursor: pointer; 
+font-size: large;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+#login-div{
+    display: none;
+    line-height: 3rem;
+}
+
+
+#login-button{
+    /* border: hidden;   */
+    cursor: pointer; 
+    font-size: large;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    
+}
+
+#create-button{
+    cursor: pointer; 
+    font-size: large;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    
+}
