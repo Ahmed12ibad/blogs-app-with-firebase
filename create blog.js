@@ -1,7 +1,7 @@
 
   import { initializeApp } from "https://www.gstatic.com/firebasejs/9.12.1/firebase-app.js";
   import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/9.12.1/firebase-auth.js";
-  import { collection, addDoc,getFirestore, doc, updateDoc ,onSnapshot ,arrayUnion,arrayRemove } from "https://www.gstatic.com/firebasejs/9.12.1/firebase-firestore.js"; 
+  import { collection, addDoc,getFirestore, doc, updateDoc ,onSnapshot ,arrayUnion,arrayRemove,deleteDoc } from "https://www.gstatic.com/firebasejs/9.12.1/firebase-firestore.js"; 
   import { getStorage, ref, uploadBytesResumable, getDownloadURL, } from "https://www.gstatic.com/firebasejs/9.12.1/firebase-storage.js";
 
 
@@ -155,36 +155,17 @@ card_child_1.innerHTML += `
     <div class="card" style="width: 18rem;">
     <img class="card-img-top" src="${doc.data().post}" id="post-imge" >
     <div class="card-body">
-      <h5 class="card-title">${doc.data().tilte}</h5>
-      <p class="card-text"> ${doc.data().discribtion}</p>
+      <h5 class="card-title" id="title">${doc.data().tilte}</h5>
+      <p class="card-text" id="discribtion"> ${doc.data().discribtion}</p>
       (${doc.data().like.length})
        ${doc.data().like.indexOf(uid) !== -1
          ?  `<i onclick="unLikePost('${doc.id}',)" class="fa-solid fa-thumbs-up"></i>`
        :  `<i onclick="Like('${doc.id}',)" class="fa-regular fa-thumbs-up"></i>`}
+       <button  id="delete_blog" onclick="delete_blog('${doc.id}')">delete</button>
     </div>
   </div>
 
 `
-
-// card_child_1.innerHTML += `
-//             <div id="card">
-//             <div id="img_div">
-//             <img src="${doc.data().post}">
-//             </div>
-//              <div id="title"><p>${doc.data().tilte}</p></div>
-//              <div id="description"><p>${doc.data().discribtion}</p></div>
-//              <p id="like_button"> ${doc.data().like.length}
-            
-//              ${doc.data().like.indexOf(uid) !== -1
-//              ?  `<i onclick="unLikePost('${doc.id}',)" class="fa-solid fa-thumbs-up"></i>`
-//                 :  `<i onclick="Like('${doc.id}',)" class="fa-regular fa-thumbs-up"></i>`}
-              
-            
-//             </p>
-//             </div>
-            
-//             `
-
 
     });
  
@@ -221,6 +202,18 @@ let unLikePost = async(id,)=>{
 }
 
 window.unLikePost = unLikePost
+
+
+
+let delete_blog =async(id)=>{
+  await deleteDoc(doc(db, "post-data-All", id));
+}
+
+window.delete_blog  = delete_blog
+
+
+
+
 
 
 
