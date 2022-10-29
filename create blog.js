@@ -27,10 +27,17 @@ const upload_image = document.getElementById("upload-image")
 ////
 let uid;
 ///
+//
+let email;
+//
 let user_login_cheack=()=>{
   onAuthStateChanged(auth,(user) => {
     if (user) {
+      // console.log(user);
        uid = user.uid;
+       email = user.email
+
+
 
 //////////////////////////////////////////////
 
@@ -127,7 +134,7 @@ discribtion.value=""
 ////////////////
 user_login()
 //////////////
-      console.log(uid);
+  console.log(uid);
       // ...
     }else{
       // User is signed out
@@ -139,7 +146,7 @@ user_login()
 
 user_login_cheack()
 
-let ADMIN = []
+// let ADMIN = []
 
 let get_data_post = () => {
 
@@ -151,9 +158,9 @@ let get_data_post = () => {
   const unsubscribe = onSnapshot(collection(db, "post-data-All"), (querySnapshot) => {
     card_child_1.innerHTML=""
     querySnapshot.forEach((doc) => { 
-      console.log(doc.data())
-      ADMIN.push(uid)
-      console.log(doc.id);
+      // console.log(doc.data())
+      // ADMIN.push(uid)
+      // console.log(doc.id);
 
 card_child_1.innerHTML += `
 
@@ -177,23 +184,13 @@ card_child_1.innerHTML += `
   });
 }
 
-let user_login1 = document.getElementById("user-login-cheack")
 
 let user_login=() => {
-
-  const unsubscribe = onSnapshot(collection(db, "user"), (querySnapshot) => {
-    
-    querySnapshot.forEach((doc) => { 
-      console.log(doc.data())
-      
+  let user_login1 = document.getElementById("user-login-cheack")
       user_login1.innerHTML=`
-      '${doc.data().name}'
+      ${email}
       `
 
-
-    });
- 
-  });
 }
 
 
@@ -215,7 +212,6 @@ window.Like = Like
 let unLikePost = async(id,)=>{
   console.log("unlike");
   const washingtonRef = doc(db, "post-data-All",id);
-
   // Atomically increment the population of the city by 50.
   await updateDoc(washingtonRef, {
       like: arrayRemove(uid),
@@ -231,12 +227,12 @@ window.unLikePost = unLikePost
 
 let delete_blog =async(id)=>{
   
-  
+  // if(ADMIN === id){
   await deleteDoc(doc(db, "post-data-All", id));
 
-  }
+  // }else{alert("sorry your not post")}
 
-
+}
 
 window.delete_blog  = delete_blog
 
