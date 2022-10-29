@@ -123,6 +123,10 @@ discribtion.value=""
     //////////
     get_data_post()
 ///////////////////////////////
+
+////////////////
+user_login()
+//////////////
       console.log(uid);
       // ...
     }else{
@@ -132,10 +136,10 @@ discribtion.value=""
     }
   });
 }
+
 user_login_cheack()
 
-
-
+let ADMIN = []
 
 let get_data_post = () => {
 
@@ -148,6 +152,7 @@ let get_data_post = () => {
     card_child_1.innerHTML=""
     querySnapshot.forEach((doc) => { 
       console.log(doc.data())
+      ADMIN.push(uid)
       console.log(doc.id);
 
 card_child_1.innerHTML += `
@@ -166,6 +171,25 @@ card_child_1.innerHTML += `
   </div>
 
 `
+
+    });
+ 
+  });
+}
+
+let user_login1 = document.getElementById("user-login-cheack")
+
+let user_login=() => {
+
+  const unsubscribe = onSnapshot(collection(db, "user"), (querySnapshot) => {
+    
+    querySnapshot.forEach((doc) => { 
+      console.log(doc.data())
+      
+      user_login1.innerHTML=`
+      '${doc.data().name}'
+      `
+
 
     });
  
@@ -206,10 +230,16 @@ window.unLikePost = unLikePost
 
 
 let delete_blog =async(id)=>{
+  
+  
   await deleteDoc(doc(db, "post-data-All", id));
-}
+
+  }
+
+
 
 window.delete_blog  = delete_blog
+
 
 
 

@@ -35,17 +35,35 @@ body{
     width: auto; */
     background-color: aqua;
     display: flex;
-    justify-content: center;
+     /* justify-content: center; */
     align-items: center; 
-    /* position: fixed; */
+     /* position: fixed;  */
+     position: relative;
 }
 
 #blog-app-css{
     color: red;
     font-style: italic;
-   font-size:50px;
+   font-size:40px;
+   margin-left: 25%;
+position: relative;
    /* text-align: center; */
 }
+
+#user-login-css{
+text-transform: uppercase;
+position: relative;
+color: aliceblue;
+}
+
+#user-login-cheack{
+    text-transform: uppercase;
+    margin-left: 10px;
+    margin-top: 10px;
+    color: red;
+    font-weight: bold;
+}
+
 
 #post-div{
     /* flex: 0.1; */
@@ -139,6 +157,7 @@ height: auto;
     #delete_blog{
         text-transform: uppercase;
 margin-left: 50%;
+border-radius: 20px;
 
     }
 
