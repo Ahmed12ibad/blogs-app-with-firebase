@@ -45,7 +45,7 @@ const post_btn = document.getElementById("post-button")
 
 post_btn.addEventListener('click',async()=>{
 
-// if(title === "" && discribtion === "" && upload_image  === ""){
+if(title.value !== "" && discribtion.value !== ""){
   
 
     
@@ -118,7 +118,7 @@ post_btn.addEventListener('click',async()=>{
         
 title.value=""
 discribtion.value=""
-      // }else{alert("plzz fill title discribtion upload file")}
+      }else{alert("plzz fill title discribtion upload file")}
 
     })
   
@@ -132,7 +132,7 @@ discribtion.value=""
 ///////////////////////////////
 
 ////////////////
-user_login()
+// user_login()
 //////////////
   console.log(uid);
       // ...
@@ -159,25 +159,41 @@ let get_data_post = () => {
     card_child_1.innerHTML=""
     querySnapshot.forEach((doc) => { 
       // console.log(doc.data())
-      // ADMIN.push(uid)
-      // console.log(doc.id);
-
-card_child_1.innerHTML += `
-
-    <div class="card" style="width: 18rem;">
-    <img class="card-img-top" src="${doc.data().post}" id="post-imge" >
-    <div class="card-body">
-      <h5 class="card-title" id="title">${doc.data().tilte}</h5>
-      <p class="card-text" id="discribtion"> ${doc.data().discribtion}</p>
+  
+      card_child_1.innerHTML +=`
+      <div id="card">
+      <img src="${doc.data().post}" id="post_imge">
+      <p id="title">${doc.data().tilte}</p>
+      <p id="discribtion"> ${doc.data().discribtion}</p>
       (${doc.data().like.length})
-       ${doc.data().like.indexOf(uid) !== -1
-         ?  `<i onclick="unLikePost('${doc.id}',)" class="fa-solid fa-thumbs-up"></i>`
+        ${doc.data().like.indexOf(uid) !== -1
+          ?  `<i onclick="unLikePost('${doc.id}',)" class="fa-solid fa-thumbs-up"></i>`
        :  `<i onclick="Like('${doc.id}',)" class="fa-regular fa-thumbs-up"></i>`}
-       <button  id="delete_blog" onclick="delete_blog('${doc.id}')">delete</button>
-    </div>
+      <button id="delte_blog" onclick="delete_blog('${doc.id}')">DELETE BLOG</button>
+
   </div>
 
-`
+      `
+
+// card_child_1.innerHTML += `
+
+//     <div class="card" style="width: 18rem;">
+//     <img class="card-img-top" src="${doc.data().post}" id="post-imge" >
+//     <div class="card-body">
+//       <h5 class="card-title" id="title">${doc.data().tilte}</h5>
+//       <p class="card-text" id="discribtion"> ${doc.data().discribtion}</p>
+//       (${doc.data().like.length})
+//        ${doc.data().like.indexOf(uid) !== -1
+//          ?  `<i onclick="unLikePost('${doc.id}',)" class="fa-solid fa-thumbs-up"></i>`
+//        :  `<i onclick="Like('${doc.id}',)" class="fa-regular fa-thumbs-up"></i>`}
+//        <button  id="delete_blog" onclick="delete_blog('${doc.id}')">delete</button>
+//     </div>
+//   </div>
+
+// `
+
+
+
 
     });
  
@@ -185,13 +201,13 @@ card_child_1.innerHTML += `
 }
 
 
-let user_login=() => {
-  let user_login1 = document.getElementById("user-login-cheack")
-      user_login1.innerHTML=`
-      ${email}
-      `
+// let user_login=() => {
+//   let user_login1 = document.getElementById("user-login-cheack")
+//       user_login1.innerHTML=`
+//       ${email}
+//       `
 
-}
+// }
 
 
 console.log("like");
