@@ -1,7 +1,7 @@
 
   import { initializeApp } from "https://www.gstatic.com/firebasejs/9.12.1/firebase-app.js";
-  import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/9.12.1/firebase-auth.js";
-  import { collection, addDoc,getFirestore, doc, updateDoc ,onSnapshot ,arrayUnion,arrayRemove,deleteDoc } from "https://www.gstatic.com/firebasejs/9.12.1/firebase-firestore.js"; 
+  import { getAuth, onAuthStateChanged,signOut } from "https://www.gstatic.com/firebasejs/9.12.1/firebase-auth.js";
+  import { collection, addDoc,getFirestore, doc, updateDoc ,onSnapshot ,arrayUnion,arrayRemove,deleteDoc, } from "https://www.gstatic.com/firebasejs/9.12.1/firebase-firestore.js"; 
   import { getStorage, ref, uploadBytesResumable, getDownloadURL, } from "https://www.gstatic.com/firebasejs/9.12.1/firebase-storage.js";
 
 
@@ -139,7 +139,7 @@ discribtion.value=""
     }else{
       // User is signed out
       alert("you not login account")
-      // ...
+      location.replace("index.html")
     }
   });
 }
@@ -175,25 +175,6 @@ let get_data_post = () => {
 
       `
 
-// card_child_1.innerHTML += `
-
-//     <div class="card" style="width: 18rem;">
-//     <img class="card-img-top" src="${doc.data().post}" id="post-imge" >
-//     <div class="card-body">
-//       <h5 class="card-title" id="title">${doc.data().tilte}</h5>
-//       <p class="card-text" id="discribtion"> ${doc.data().discribtion}</p>
-//       (${doc.data().like.length})
-//        ${doc.data().like.indexOf(uid) !== -1
-//          ?  `<i onclick="unLikePost('${doc.id}',)" class="fa-solid fa-thumbs-up"></i>`
-//        :  `<i onclick="Like('${doc.id}',)" class="fa-regular fa-thumbs-up"></i>`}
-//        <button  id="delete_blog" onclick="delete_blog('${doc.id}')">delete</button>
-//     </div>
-//   </div>
-
-// `
-
-
-
 
     });
  
@@ -210,8 +191,8 @@ let get_data_post = () => {
 // }
 
 
-console.log("like");
- let Like = async(id ,)=>{
+let Like = async(id ,)=>{
+   console.log("like");
    const washingtonRef = doc(db, "post-data-All",id);
    
    // Atomically increment the population of the city by 50.
@@ -253,6 +234,35 @@ let delete_blog =async(id)=>{
 window.delete_blog  = delete_blog
 
 
+// logout
+
+const logout = document.getElementById("logout")
+logout.addEventListener("mouseover",()=>{
+  logout.style.backgroundColor="black"
+  logout.style.borderColor="red"
+})
+
+
+logout.addEventListener("mouseout",()=>{
+  logout.style.backgroundColor="rgba(248, 233, 233, 0.526)"
+  logout.style.borderColor="rgba(248, 233, 233, 0.526)"
+})
+
+
+logout.addEventListener('click',()=>{
+
+  
+  signOut(auth).then(() => {
+    location.replace("index.html")
+  }).catch((error) => {
+    console.log(error);
+  });
+
+
+})
+
+
+////
 
 
 

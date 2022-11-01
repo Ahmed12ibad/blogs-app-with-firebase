@@ -89,7 +89,7 @@ createUserWithEmailAndPassword(auth, rigisteremail.value, rigisterpassword.value
       // Signed in 
       const user = userCredential.user;
 
-      window.location="create blog.html"
+      location.replace("create blog.html")
       setTimeout(()=>{window.location="login.html"},2000)
       
       console.log("rigister") ;
