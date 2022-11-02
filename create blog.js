@@ -238,14 +238,16 @@ window.delete_blog  = delete_blog
 
 const logout = document.getElementById("logout")
 logout.addEventListener("mouseover",()=>{
-  logout.style.backgroundColor="black"
-  logout.style.borderColor="red"
+  logout.style.backgroundColor="white"
+  logout.style.color="black"
+  // logout.style.borderColor="black"
 })
 
 
 logout.addEventListener("mouseout",()=>{
-  logout.style.backgroundColor="rgba(248, 233, 233, 0.526)"
-  logout.style.borderColor="rgba(248, 233, 233, 0.526)"
+  logout.style.backgroundColor="black"
+  logout.style.color="white"
+  // logout.style.borderColor="black"
 })
 
 

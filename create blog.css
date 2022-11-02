@@ -2,6 +2,8 @@
     /* margin-top: 100px; */
     cursor: pointer;
     font-size:x-large;
+/* text-align: end; */
+    /* align-items: flex-end; */
 }
 
 /* #post{
@@ -52,12 +54,13 @@ position: relative;
 
 
 #logout{
-    /* margin-left: 100px; */
-    /* color: aliceblue; */
+
     color: white;
     border-radius: 20px;
-    background-color: rgba(248, 233, 233, 0.526);
-    /* border-color:red; */
+    background-color: black;
+    border-color:black;
+    font-weight: bold;
+    
 }
 
 
@@ -130,15 +133,17 @@ cursor: pointer;
 /* mera new card */
 
 #card{
-    /* height: 320px; */
-    height: auto;
-    width: 250px;
+    flex: 0.1;
+    /* height: 40%; */
+    /* height: auto; */
+    /* width: 250px; */
     /* width: auto; */
     margin-left: 60px;
     margin-top: 20px;
     background-color: rgb(254, 255, 250);
     border-radius: 10px;
     word-break: break-all;
+    /* display: flex; */
 }
 
 #post_imge{
