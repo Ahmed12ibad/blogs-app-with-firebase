@@ -1,7 +1,7 @@
 
   import { initializeApp } from "https://www.gstatic.com/firebasejs/9.12.1/firebase-app.js";
   import { getAuth, onAuthStateChanged,signOut } from "https://www.gstatic.com/firebasejs/9.12.1/firebase-auth.js";
-  import { collection, addDoc,getFirestore, doc, updateDoc ,onSnapshot ,arrayUnion,arrayRemove,deleteDoc, } from "https://www.gstatic.com/firebasejs/9.12.1/firebase-firestore.js"; 
+  import { collection, getDoc, addDoc,getFirestore, doc, updateDoc ,onSnapshot ,arrayUnion,arrayRemove,deleteDoc, } from "https://www.gstatic.com/firebasejs/9.12.1/firebase-firestore.js"; 
   import { getStorage, ref, uploadBytesResumable, getDownloadURL, } from "https://www.gstatic.com/firebasejs/9.12.1/firebase-storage.js";
 
 
@@ -132,7 +132,7 @@ discribtion.value=""
 ///////////////////////////////
 
 ////////////////
-// user_login()
+user_login()
 //////////////
   console.log(uid);
       // ...
@@ -181,14 +181,29 @@ let get_data_post = () => {
   });
 }
 
+// user login name
 
-// let user_login=() => {
-//   let user_login1 = document.getElementById("user-login-cheack")
-//       user_login1.innerHTML=`
-//       ${email}
-//       `
+let user_login=async()=> {
+  let user_login1 = document.getElementById("login_user_name")
 
-// }
+  const docRef = doc(db, "user", uid);
+const docSnap = await getDoc(docRef);
+
+if (docSnap.exists()) {
+  console.log("Document data:", docSnap.data());
+  user_login1.innerHTML=`
+  <h1>user login 👉 ${docSnap.data().name} </h1>
+  `
+
+} else {
+  // doc.data() will be undefined in this case
+  console.log("No such document!");
+}
+
+     
+}
+
+//
 
 
 let Like = async(id ,)=>{
@@ -225,7 +240,8 @@ window.unLikePost = unLikePost
 let delete_blog =async(id)=>{
   
   // if(ADMIN === id){
-  await deleteDoc(doc(db, "post-data-All", id));
+    alert("comming soon ...")
+  // await deleteDoc(doc(db, "post-data-All", id));
 
   // }else{alert("sorry your not post")}
 
