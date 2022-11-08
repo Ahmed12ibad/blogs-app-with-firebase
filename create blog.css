@@ -6,11 +6,17 @@
     /* align-items: flex-end; */
 }
 
-/* #post{
-    font-size: larger;
-    text-transform: uppercase;
-    text-decoration: dotted;
-     */
+.fa-user-group{
+    /* margin-left: 35%; */
+    font-size: x-large;
+    cursor: pointer;
+}
+
+.fa-xmark{
+    font-size: x-large;
+    cursor: pointer;
+    margin-right: 10px;
+}
 
 
 body{
@@ -20,6 +26,7 @@ body{
     margin: 0%;
     padding: 0%;
     display: flex;
+    justify-content: flex-end;
 }
 #main-div {
     flex: 1;
@@ -27,7 +34,7 @@ body{
     display: flex;
     flex-direction: column;
     /* position: fixed; */
-    /* position: relative; */
+    position: relative;
     
 }
 
@@ -127,17 +134,44 @@ cursor: pointer;
   display: flex;
   flex-wrap: wrap;
 }
-/* #card-child-2{
-    flex: 1;
-    background-color: rgb(237, 252, 252);
+
+#chat_messge_div{
+    
+height: 135%;
+width: 300px;
+/* background-color: aqua; */
+position: absolute;
+/* transition: transform .1s ease-in-out; */
+ animation-name: move; 
+animation-duration: 2s;
+animation-iteration-count: 1;
+display: flex;
+flex-direction: column;
+display: none;
 }
-#card-child-3{
-    flex: 1;
-    background-color: cadetblue;
+@keyframes move {
+     from{width: 0px;}
+    to{width: 300px;}
+}
+/* @keyframes unmove {
+     from{width: 300px;}
+    to{width: 0px;}
 } */
 
+#friends_div_and_close{
+    width: 100%;
+height: 60px;
+background-color: aliceblue;
+display: flex;
+justify-content: space-between;
+align-items: center;
+}
 
-/* mera new card */
+#friends_chat_name{
+    width: 100%;
+    height: 100%;
+    background-color: bisque;
+}
 
 #card{
     flex: 0.1;

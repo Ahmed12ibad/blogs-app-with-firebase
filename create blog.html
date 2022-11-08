@@ -7,10 +7,13 @@
     <link rel="stylesheet" href="create blog.css">
     <link rel="stylesheet" href="	https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <title>create blog</title>
 </head>
 <body >
  
+   
+
 <div id="main-div" >
 
 <div id="header" >
@@ -22,6 +25,7 @@
 
     <div id="login_user_name"></div>
 
+    <i onclick="div_chat()" class="fa-solid fa-user-group"></i>
     <button id="logout">LOGOUT</button>
 
     <!-- header -->
@@ -31,7 +35,9 @@
  <textarea type="text" name="text" placeholder="enter discribtion" id="post-discribtion" cols="40" rows="2"></textarea>
   <input  type="file" id="upload-image">
   
-   <button id="post-button"  >post</button>  
+  <button id="post-button"  >post</button>
+
+
 <!-- post-div -->
 </div>
 
@@ -40,7 +46,7 @@
 
 <div id="card-child-1">
 
-  
+ 
 
     <!-- card-child-1 -->
 </div>
@@ -71,6 +77,30 @@
 <!-- main div -->
 </div>
 
+<div id='chat_messge_div'>
+
+    <div id="friends_div_and_close">
+
+   <div><h1>friends</h1></div>
+   <i onclick="div_chat_close()" class="fa-solid fa-xmark"></i>
+
+        <!-- friends_div_and_close   -->
+    </div>
+    
+    <div id="friends_chat_name">
+
+
+
+
+
+        <!-- friends_chat_name -->
+    </div>
+
+
+
+
+    <!-- chat_messge_div -->
+</div>
 
 
 
@@ -95,6 +125,10 @@
 
 
 <script src="https://kit.fontawesome.com/ccb5ca2781.js" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+    AOS.init();
+  </script>
     <script src="create blog.js" type="module"></script>
 </body>
 

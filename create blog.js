@@ -1,4 +1,23 @@
 
+  let div_chat=()=>{
+let div_chat = document.getElementById("chat_messge_div").style.display="block"
+  }
+  window.div_chat=div_chat
+  
+  let div_chat_close = ()=>{
+    let div_chat = document.getElementById("chat_messge_div")
+    div_chat.style.display="none"
+
+
+//     div_chat.style.animationName="unmove"
+// div_chat.style.animationDuration="2s"
+// div_chat.style.animationIterationCount="1"
+
+
+
+  }
+  window.div_chat_close=div_chat_close
+
   import { initializeApp } from "https://www.gstatic.com/firebasejs/9.12.1/firebase-app.js";
   import { getAuth, onAuthStateChanged,signOut } from "https://www.gstatic.com/firebasejs/9.12.1/firebase-auth.js";
   import { collection, getDoc, addDoc,getFirestore, doc, updateDoc ,onSnapshot ,arrayUnion,arrayRemove,deleteDoc, } from "https://www.gstatic.com/firebasejs/9.12.1/firebase-firestore.js"; 
@@ -161,7 +180,7 @@ let get_data_post = () => {
       // console.log(doc.data())
   
       card_child_1.innerHTML +=`
-      <div id="card">
+      <div id="card" data-aos="fade-up" data-aos-duration="1600"data-aos-offset="180">
       <img src="${doc.data().post}" id="post_imge">
       <p id="title">${doc.data().tilte}</p>
       <p id="discribtion"> ${doc.data().discribtion}</p>
@@ -192,7 +211,7 @@ const docSnap = await getDoc(docRef);
 if (docSnap.exists()) {
   console.log("Document data:", docSnap.data());
   user_login1.innerHTML=`
-  <h1>user login 👉 ${docSnap.data().name} </h1>
+  <h1>user login (${docSnap.data().name}) </h1>
   `
 
 } else {

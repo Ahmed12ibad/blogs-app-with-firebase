@@ -21,6 +21,18 @@ background-color: rgb(47, 38, 38);
     background-color: rgb(88, 84, 84);
     border-radius: 20px;
     /* transition: all; */
+    position: absolute;
+    animation-name: move;
+    animation-duration: 2s;
+    animation-iteration-count: 1;
+}
+@keyframes move {
+    from{
+        width: 0px; left: 0px;
+    }
+    to{
+width: 230px; left: 568px;
+    }
 }
 
 #rigister-div{
