@@ -28,6 +28,30 @@ body{
     display: flex;
     justify-content: flex-end;
 }
+/* body.friend_messge_div{
+    justify-content: flex-start;
+} */
+
+#friend_messge_div{
+    /* margin-right: 200px; */
+    margin-top: 150px;
+    border-radius: 10px;
+    height: 60%;
+    width: 300px;
+    background-color: rgb(101, 95, 160);
+    position: absolute;
+    animation-name: move1; 
+    animation-duration: 2s;
+    animation-iteration-count: 1;
+
+    display: none;
+}
+@keyframes move1 {
+    from{width: 0px;}
+   to{width: 300px;}
+}
+
+
 #main-div {
     flex: 1;
     /* background-color: aqua; */
@@ -37,6 +61,7 @@ body{
     position: relative;
     
 }
+
 
 #header{
     flex: 0.1;
@@ -121,6 +146,7 @@ cursor: pointer;
     flex: 1.5;
     background-color: rgb(122, 182, 182);
     display: flex;
+    position: relative;
     /* display: inline; */
     /* flex-direction: ; */
 
@@ -133,9 +159,11 @@ cursor: pointer;
   /* display: flex; */
   display: flex;
   flex-wrap: wrap;
+  position: relative;
 }
 
 #chat_messge_div{
+    /* margin-left: 200px; */
     
 height: 135%;
 width: 300px;
@@ -148,6 +176,7 @@ animation-iteration-count: 1;
 display: flex;
 flex-direction: column;
 display: none;
+
 }
 @keyframes move {
      from{width: 0px;}
@@ -173,6 +202,20 @@ align-items: center;
     background-color: bisque;
 }
 
+#start_btn{
+border-radius: 20px;
+font-weight: bold;
+background-color:black;
+color: white;
+border-color: rgb(87, 85, 85);
+
+}
+
+#start_btn:hover{
+    background-color: white;
+    color: black;
+}
+
 #card{
     flex: 0.1;
     /* height: 40%; */
@@ -184,6 +227,7 @@ align-items: center;
     background-color: rgb(254, 255, 250);
     border-radius: 10px;
     word-break: break-all;
+    position: relative;
     /* display: flex; */
 }
 

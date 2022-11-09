@@ -56,7 +56,8 @@ createUserWithEmailAndPassword(auth, rigisteremail.value, rigisterpassword.value
       fathername:fname.value,
       date:date.value,
       email: rigisteremail.value,
-      password: rigisterpassword.value
+      password: rigisterpassword.value,
+      uid:user.uid
     });
     // console.log("Document written with ID: ", docRef.id);
 

@@ -7,20 +7,13 @@ let div_chat = document.getElementById("chat_messge_div").style.display="block"
   let div_chat_close = ()=>{
     let div_chat = document.getElementById("chat_messge_div")
     div_chat.style.display="none"
-
-
-//     div_chat.style.animationName="unmove"
-// div_chat.style.animationDuration="2s"
-// div_chat.style.animationIterationCount="1"
-
-
-
+  friend_messge_div.style.display="none"
   }
   window.div_chat_close=div_chat_close
 
   import { initializeApp } from "https://www.gstatic.com/firebasejs/9.12.1/firebase-app.js";
   import { getAuth, onAuthStateChanged,signOut } from "https://www.gstatic.com/firebasejs/9.12.1/firebase-auth.js";
-  import { collection, getDoc, addDoc,getFirestore, doc, updateDoc ,onSnapshot ,arrayUnion,arrayRemove,deleteDoc, } from "https://www.gstatic.com/firebasejs/9.12.1/firebase-firestore.js"; 
+  import { collection, getDoc, addDoc,getFirestore, doc, updateDoc ,onSnapshot ,arrayUnion,arrayRemove,deleteDoc, query, where, } from "https://www.gstatic.com/firebasejs/9.12.1/firebase-firestore.js"; 
   import { getStorage, ref, uploadBytesResumable, getDownloadURL, } from "https://www.gstatic.com/firebasejs/9.12.1/firebase-storage.js";
 
 
@@ -153,7 +146,10 @@ discribtion.value=""
 ////////////////
 user_login()
 //////////////
-  console.log(uid);
+//
+friend_chat()
+//
+console.log(uid);
       // ...
     }else{
       // User is signed out
@@ -199,6 +195,49 @@ let get_data_post = () => {
  
   });
 }
+
+let friend_chat =()=>{
+
+let friends_chat_name = document.getElementById("friends_chat_name")
+
+  const q = query(collection(db, "user"), where("email", "!=", email));
+  const unsubscribe = onSnapshot(q, (querySnapshot) => {
+    friends_chat_name.innerHTML=""
+    querySnapshot.forEach((doc) => {
+        console.log(doc.data());
+
+        friends_chat_name.innerHTML +=`
+        <li> ${doc.data().name}
+        <button id="start_btn" onclick="start_chat('${doc.data().uid}','${uid}','${doc.data().name}')">start chat </button>
+        </li>
+                 
+        `
+
+
+    });
+    
+  });
+
+}
+window.friend_chat=friend_chat
+
+let merge_uid;
+let friend_messge_div = document.getElementById("friend_messge_div")
+
+let start_chat=(friend_uid,current_uid,friend_name)=>{
+console.log("han chal raha he");
+friend_messge_div.style.display="block"
+
+if(current_uid > friend_uid){
+  merge_uid = `${current_uid}${friend_uid}`
+}
+else{
+  merge_uid = `${friend_uid}${current_uid}`
+}
+
+}
+window.start_chat = start_chat
+
 
 // user login name
 
@@ -286,9 +325,12 @@ logout.addEventListener("mouseout",()=>{
 })
 
 
+
+
+
+
 logout.addEventListener('click',()=>{
 
-  
   signOut(auth).then(() => {
     location.replace("index.html")
   }).catch((error) => {
@@ -300,7 +342,24 @@ logout.addEventListener('click',()=>{
 
 
 ////
+// chat_btn
+// setTimeout(()=>{
 
+//   let start_btn = document.getElementById("start_btn")
+//   let start_btn1 = ()=>{
+//     start_btn.style.backgroundColor="white"
+//     start_btn.style.color="black"
+//     // logout.style.borderColor="black"
+//   }
+//   window.start_btn1=start_btn1
+  
+//   let start_btn2 = ()=>{
+//     start_btn.style.backgroundColor="black"
+//     start_btn.style.color="white"
+//     // logout.style.borderColor="black"
+//   }
+//   window.start_btn2=start_btn2
+// },4000)
 
 
 
