@@ -74,3 +74,25 @@ font-size: large;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     
 }
+
+@media only screen and (max-width:370px) {
+    
+#main_div{
+    animation-name: move2;
+    animation-duration: 2s;
+    animation-iteration-count: 1;
+
+}
+@keyframes move2 {
+    from{
+     top: 0px;
+    }
+    to{
+ top: 192px;
+    }
+}
+
+
+
+}
+
