@@ -2,6 +2,7 @@
   let div_chat=()=>{
 let div_chat = document.getElementById("chat_messge_div").style.display="block"
   }
+
   window.div_chat=div_chat
   
   let div_chat_close = ()=>{
@@ -9,11 +10,18 @@ let div_chat = document.getElementById("chat_messge_div").style.display="block"
     div_chat.style.display="none"
   friend_messge_div.style.display="none"
   }
+
   window.div_chat_close=div_chat_close
+
+  let chat_div_close= ()=>{
+    friend_messge_div.style.display="none"
+  }
+
+window.chat_div_close=chat_div_close
 
   import { initializeApp } from "https://www.gstatic.com/firebasejs/9.12.1/firebase-app.js";
   import { getAuth, onAuthStateChanged,signOut } from "https://www.gstatic.com/firebasejs/9.12.1/firebase-auth.js";
-  import { collection, getDoc, addDoc,getFirestore, doc, updateDoc ,onSnapshot ,arrayUnion,arrayRemove,deleteDoc, query, where, } from "https://www.gstatic.com/firebasejs/9.12.1/firebase-firestore.js"; 
+  import { collection, getDoc, addDoc,getFirestore, doc, updateDoc ,onSnapshot ,arrayUnion,arrayRemove,deleteDoc, query, where,serverTimestamp, orderBy } from "https://www.gstatic.com/firebasejs/9.12.1/firebase-firestore.js"; 
   import { getStorage, ref, uploadBytesResumable, getDownloadURL, } from "https://www.gstatic.com/firebasejs/9.12.1/firebase-storage.js";
 
 
@@ -196,6 +204,8 @@ let get_data_post = () => {
   });
 }
 
+// friend chat
+
 let friend_chat =()=>{
 
 let friends_chat_name = document.getElementById("friends_chat_name")
@@ -221,10 +231,15 @@ let friends_chat_name = document.getElementById("friends_chat_name")
 }
 window.friend_chat=friend_chat
 
+// start chat
+
 let merge_uid;
 let friend_messge_div = document.getElementById("friend_messge_div")
+let friend_div_name = document.getElementById("friend_div_name")
+let input_value = document.getElementById("input_value")
 
 let start_chat=(friend_uid,current_uid,friend_name)=>{
+
 console.log("han chal raha he");
 friend_messge_div.style.display="block"
 
@@ -235,8 +250,57 @@ else{
   merge_uid = `${friend_uid}${current_uid}`
 }
 
+friend_div_name.innerHTML=`
+❤<h2 id="friend_name">${friend_name}</h2>
+`
+render_data_all_messge()
+setTimeout(()=>{input_value.focus()},3000)
+
 }
 window.start_chat = start_chat
+
+// send messge 
+
+let send_messge = document.getElementById("send_messge")
+
+
+send_messge.addEventListener('click',async()=>{
+  if(input_value.value !== ""){
+chat_div.innerHTML=""
+  const docRef = await addDoc(collection(db, "messages"), {
+    messge: input_value.value,
+    merge_uid:merge_uid,
+    timestamp: serverTimestamp()
+  });
+input_value.value=""
+  }else{
+    alert("enter messages plzz")
+  }
+})
+
+
+
+
+// render_data_all_messge
+
+let chat_div = document.getElementById("chat_div")
+
+let render_data_all_messge = ()=>{
+
+const q = query(collection(db, "messages"), where("merge_uid", "==", merge_uid),orderBy("timestamp", "desc"));
+const unsubscribe = onSnapshot(q, (querySnapshot) => {
+  chat_div.innerHTML=""
+  querySnapshot.forEach((doc) => {
+      // console.log(doc.data());
+      chat_div.innerHTML+=`
+      <li id="messages" data-aos="fade-up" data-aos-duration="1600">${doc.data().messge}</li>
+      `
+  });
+  // console.log("Current cities in CA: ", cities.join(", "));
+});
+}
+
+window.render_data_all_messge=render_data_all_messge
 
 
 // user login name
