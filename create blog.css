@@ -262,8 +262,8 @@ display: none;
 
 #friends_div_and_close{
     width: 100%;
-height: 60px;
-background-color: rgb(191, 239, 143);
+height: 40px;
+background-color: rgb(90, 90, 89);
 display: flex;
 justify-content: space-between;
 align-items: center;
