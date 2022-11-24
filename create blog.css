@@ -118,10 +118,14 @@ background-color: black;
     cursor: progress;
     font-weight: bold;
     font-style: italic;
+    /* margin-left: 250px; */
 }
 
 #messages:hover{
     color: red;
+}
+#messages:before{
+    margin-left: 250px;
 }
 
 
@@ -137,7 +141,9 @@ background-color: black;
 
 
 #header{
-    flex: 0.1;
+    /* flex: 0.1; */
+    width: 100%;
+    height: 50px;
     /* height: auto;
     width: auto; */
     background-color: gray;
@@ -165,6 +171,7 @@ position: relative;
     background-color: black;
     border-color:black;
     font-weight: bold;
+    cursor: pointer;
     
 }
 
@@ -304,7 +311,7 @@ border-color: rgb(87, 85, 85);
     /* width: 250px; */
     /* width: auto; */
     margin-left: 60px;
-    margin-top: 20px;
+    margin-top: 40px;
     background-color: rgb(254, 255, 250);
     border-radius: 10px;
     word-break: break-all;
@@ -333,7 +340,14 @@ font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
 
-
+@media screen and  (max-width:550px) {
+    #blog-app-css{
+        font-size: x-large;
+    }
+    #login_user_name{
+        font-size: small;
+    }
+}
 
 
 
@@ -345,7 +359,7 @@ font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
      height: 100%!important; 
 }
 
-.card{
+.card
     margin-left: 3%;
   height: 200px;   
 } */

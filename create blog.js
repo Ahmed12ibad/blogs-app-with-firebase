@@ -184,7 +184,7 @@ let get_data_post = () => {
       // console.log(doc.data())
   
       card_child_1.innerHTML +=`
-      <div id="card" data-aos="fade-up" data-aos-duration="1600"data-aos-offset="180">
+      <div id="card" data-aos="fade-up" data-aos-duration="1600"data-aos-offset="210">
       <img src="${doc.data().post}" id="post_imge">
       <p id="title">${doc.data().tilte}</p>
       <p id="discribtion"> ${doc.data().discribtion}</p>
@@ -216,6 +216,7 @@ let friends_chat_name = document.getElementById("friends_chat_name")
     querySnapshot.forEach((doc) => {
         console.log(doc.data());
 
+        
         friends_chat_name.innerHTML +=`
         <li> ${doc.data().name}
         <button id="start_btn" onclick="start_chat('${doc.data().uid}','${uid}','${doc.data().name}')">start chat </button>
@@ -232,8 +233,9 @@ let friends_chat_name = document.getElementById("friends_chat_name")
 window.friend_chat=friend_chat
 
 // start chat
-
+let friend_uid1;
 let merge_uid;
+let current_uid1;
 let friend_messge_div = document.getElementById("friend_messge_div")
 let friend_div_name = document.getElementById("friend_div_name")
 let input_value = document.getElementById("input_value")
@@ -242,6 +244,9 @@ let start_chat=(friend_uid,current_uid,friend_name)=>{
 
 console.log("han chal raha he");
 friend_messge_div.style.display="block"
+
+friend_uid1 = friend_uid
+current_uid1 = current_uid
 
 if(current_uid > friend_uid){
   merge_uid = `${current_uid}${friend_uid}`
@@ -254,6 +259,7 @@ friend_div_name.innerHTML=`
 ❤<h2 id="friend_name">${friend_name}</h2>
 `
 render_data_all_messge()
+
 setTimeout(()=>{input_value.focus()},3000)
 
 }
@@ -265,12 +271,17 @@ let send_messge = document.getElementById("send_messge")
 
 
 send_messge.addEventListener('click',async()=>{
+
   if(input_value.value !== ""){
 chat_div.innerHTML=""
   const docRef = await addDoc(collection(db, "messages"), {
+
     messge: input_value.value,
     merge_uid:merge_uid,
+    friend_uid:friend_uid1,
+    current_uid:current_uid1,
     timestamp: serverTimestamp()
+
   });
 input_value.value=""
   }else{
@@ -286,15 +297,20 @@ input_value.value=""
 let chat_div = document.getElementById("chat_div")
 
 let render_data_all_messge = ()=>{
+  
+  let messages = document.getElementById("messages")
 
 const q = query(collection(db, "messages"), where("merge_uid", "==", merge_uid),orderBy("timestamp", "desc"));
 const unsubscribe = onSnapshot(q, (querySnapshot) => {
   chat_div.innerHTML=""
   querySnapshot.forEach((doc) => {
       // console.log(doc.data());
+    
       chat_div.innerHTML+=`
       <li id="messages" data-aos="fade-up" data-aos-duration="1600">${doc.data().messge}</li>
       `
+      // ${doc.data().friend_uid != doc.data().current_uid ? messages.style.marginLeft="50px":""}
+      
   });
   // console.log("Current cities in CA: ", cities.join(", "));
 });
